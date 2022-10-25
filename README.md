@@ -55,6 +55,13 @@ Note that rspec is using vcr for fixtures. If you delete files from spec/fixture
 
 From there, you can run _foreman run bundle exec rake_ to regenerate the cassettes using live data in conjunction with your credentials. Just a word of warning: don't commit those cassettes to a public repo, as they will contain valid tokens that could potentially be used to hijack a live application that uses those credentials.
 
+#### Run Tests without .env
+```
+PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rake test
+PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rspec -rbyebug --color --format documentation --require ./spec/spec_helper spec
+PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rspec --backtrace --color --format documentation --require ./spec/spec_helper spec
+```
+
 ## Examples
 ```
 # init client as above
@@ -72,9 +79,3 @@ response = client.post('/orders',{
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
-
-```
-PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rake test
-PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rspec -rbyebug --color --format documentation --require ./spec/spec_helper spec
-PRINTFUL_CONSUMER_TOKEN='y' PRINTFUL_CONSUMER_SECRET='o' PRINTFUL_OAUTH_TOKEN='h' PRINTFUL_OAUTH_SECRET='s' rspec --backtrace --color --format documentation --require ./spec/spec_helper spec
-```
