@@ -1,3 +1,4 @@
+require 'dotenv/load'
 unless ENV['CI']
   require 'simplecov'
   SimpleCov.start do

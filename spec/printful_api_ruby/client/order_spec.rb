@@ -9,13 +9,10 @@ describe Printful::Client do
     printful_client.reset
   end
 
-  it "api error" do
-    VCR.use_cassette('create_order') do
-      response = client.post('/orders',{
-        foo: 'bar'
-      })
-      #response.should be_an_instance_of(Hashie::Mash)
-       expect( response[:result] ).to eq('The access token provided is invalid.')
-    end
+  it "get all orders" do
+    #VCR.use_cassette('get_orders') do
+      response = client.get('/orders')
+      expect( response[:result] ).to be_an_instance_of(Array)
+    #end
   end 
 end
