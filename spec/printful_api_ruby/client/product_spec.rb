@@ -42,8 +42,6 @@ describe Printful::Client do
 
       response[:result].each_with_index do |product, index|
         id = product[:id]
-        #sv_resp = client.get("/sync/variant/#{id}")
-        #sv_resp = client.get("/store/variants/#{id}")
         products_response = client.get("/store/products/#{id}")
         expect( products_response[:code] ).to eq(200)
         expect( products_response[:result] ).to be_an_instance_of(Hash)
@@ -58,7 +56,6 @@ describe Printful::Client do
         variants: sync_variants,
         variant_ids: sync_variant_ids
       }
-      #File.write("sync_store_product_variants.json", final.to_json)
 
     end
   end
