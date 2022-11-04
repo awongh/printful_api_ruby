@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'faraday', '~> 2.6.0'
+  gem.add_dependency 'faraday', '~> 1.10.2'
 
   gem.add_development_dependency 'byebug'
   gem.add_development_dependency 'json'
