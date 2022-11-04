@@ -25,7 +25,7 @@ The oauth_token and oauth_secret are the access tokens that are received from th
 get '/auth/:provider/callback' do
   auth = request.env['omniauth.auth']
   
-  client = Reshape::Client.new({
+  client = Printful::Client.new({
     consumer_token: ENV['PRINTFUL_CONSUMER_KEY'], 
     consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'], 
     oauth_token: auth.credentials.token,
