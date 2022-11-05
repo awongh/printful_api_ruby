@@ -6,7 +6,7 @@ unless ENV['CI']
   end
 end
 
-require 'printful'
+require 'printful_api_ruby'
 require 'rspec'
 require 'webmock/rspec'
 require 'vcr'
