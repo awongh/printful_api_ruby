@@ -1,4 +1,4 @@
-require 'faraday/response/raise_reshape_api_error'
+require 'faraday/response/raise_printful_api_error'
 
 module Printful
   module Connection
