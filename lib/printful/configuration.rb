@@ -1,5 +1,4 @@
 require 'faraday'
-require 'version'
 
 module Printful
   module Configuration
@@ -17,7 +16,7 @@ module Printful
     DEFAULT_API_VERSION = 'v1'
     DEFAULT_API_ENDPOINT = 'https://api.printful.com/'
     DEFAULT_WEB_ENDPOINT = 'https://www.printful.com/'
-    DEFAULT_USER_AGENT = "Printful Rubygem #{Printful::VERSION}".freeze
+    DEFAULT_USER_AGENT = "Printful Rubygem".freeze
     DEFAULT_RESPONSE_FORMAT = 'json'
 
     attr_accessor(*VALID_OPTIONS_KEYS)
