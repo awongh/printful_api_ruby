@@ -1,5 +1,5 @@
 require 'faraday'
-require 'version'
+require 'printful/version'
 
 module Printful
   module Configuration

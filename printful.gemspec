@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{A client for the Printful API.}
   gem.summary       = %q{A client for the Printful API.}
   gem.homepage      = "https://github.com/awongh/printful_api_ruby"
+  gem.required_ruby_version = '>= 3.2.2'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -27,5 +28,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'vcr'
   gem.add_development_dependency 'dotenv'
-  
+
 end
