@@ -4,7 +4,7 @@ require 'dotenv/load'
 unless ENV['CI']
   require 'simplecov'
   SimpleCov.start do
-    add_filter "/spec"
+    add_filter '/spec'
   end
 end
 
@@ -53,22 +53,22 @@ def stub_delete(url)
 end
 
 def fixture_path
-  File.expand_path("fixtures", __dir__)
+  File.expand_path('fixtures', __dir__)
 end
 
 def fixture(file)
-  File.new(fixture_path + '/' + file)
+  File.new("#{fixture_path}/#{file}")
 end
 
-def printful_url(url)
-  "https://api.printful.com/"
+def printful_url(_url)
+  'https://api.printful.com/'
 end
 
 def printful_client
   Printful::Client.new({
-    consumer_token: ENV['PRINTFUL_CONSUMER_TOKEN'],
-    consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'],
-    oauth_token: ENV['PRINTFUL_OAUTH_TOKEN'],
-    oauth_secret: ENV['PRINTFUL_OAUTH_SECRET']
-  })
+                         consumer_token: ENV.fetch('PRINTFUL_CONSUMER_TOKEN', nil),
+                         consumer_secret: ENV.fetch('PRINTFUL_CONSUMER_SECRET', nil),
+                         oauth_token: ENV.fetch('PRINTFUL_OAUTH_TOKEN', nil),
+                         oauth_secret: ENV.fetch('PRINTFUL_OAUTH_SECRET', nil)
+                       })
 end

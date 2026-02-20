@@ -5,21 +5,22 @@ require 'printful/version'
 
 module Printful
   module Configuration
-    VALID_OPTIONS_KEYS = [
-      :adapter,
-      :api_version,
-      :api_endpoint,
-      :web_endpoint,
-      :proxy,
-      :oauth_token,
-      :response_format,
-      :user_agent].freeze
+    VALID_OPTIONS_KEYS = %i[
+      adapter
+      api_version
+      api_endpoint
+      web_endpoint
+      proxy
+      oauth_token
+      response_format
+      user_agent
+    ].freeze
 
     DEFAULT_ADAPTER = Faraday.default_adapter
     DEFAULT_API_VERSION = 'v1'
     DEFAULT_API_ENDPOINT = 'https://api.printful.com/'
     DEFAULT_WEB_ENDPOINT = 'https://www.printful.com/'
-    DEFAULT_USER_AGENT = "Printful Rubygem #{Printful::VERSION}"
+    DEFAULT_USER_AGENT = "Printful Rubygem #{Printful::VERSION}".freeze
     DEFAULT_RESPONSE_FORMAT = 'json'
 
     attr_accessor(*VALID_OPTIONS_KEYS)
@@ -37,11 +38,11 @@ module Printful
     end
 
     def api_endpoint=(value)
-      @api_endpoint = File.join(value, "")
+      @api_endpoint = File.join(value, '')
     end
 
     def web_endpoint=(value)
-      @web_endpoint = File.join(value, "")
+      @web_endpoint = File.join(value, '')
     end
 
     def reset

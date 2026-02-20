@@ -6,12 +6,12 @@ module Printful
   module Connection
     private
 
-    def connection(raw = false, force_urlencoded = false)
+    def connection(_raw = false, _force_urlencoded = false)
       url = Printful.api_endpoint
 
       options = {
         url: url,
-        ssl: { verify: false },
+        ssl: { verify: false }
       }
 
       Faraday.new(options) do |builder|
@@ -22,7 +22,7 @@ module Printful
         builder.response :json, parser_options: { symbolize_names: true }
         builder.response :logger
 
-        self.connection_options.each { |op, v| builder.options[op] = v }
+        connection_options.each { |op, v| builder.options[op] = v }
 
         builder.adapter(*Array(adapter))
       end

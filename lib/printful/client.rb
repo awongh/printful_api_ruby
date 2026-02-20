@@ -7,8 +7,7 @@ require 'printful/error'
 
 module Printful
   class Client
-    attr_accessor(*Configuration::VALID_OPTIONS_KEYS)
-    attr_accessor :connection_options
+    attr_accessor(*Configuration::VALID_OPTIONS_KEYS, :connection_options)
 
     def initialize(options = {}, connection_options = {})
       self.connection_options = connection_options

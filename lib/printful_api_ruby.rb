@@ -7,6 +7,7 @@ require 'printful/error'
 
 module Printful
   extend Configuration
+
   class << self
     # Alias for Printful::Client.new
     #
@@ -16,7 +17,7 @@ module Printful
     end
 
     def respond_to?(method, include_private = false)
-      new.respond_to?(method, include_private) || super(method, include_private)
+      new.respond_to?(method, include_private) || super
     end
   end
 end

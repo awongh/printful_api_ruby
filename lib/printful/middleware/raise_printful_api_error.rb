@@ -23,13 +23,11 @@ module Printful
 
     def error_message(env)
       message = if (body = env.body) && !body.empty?
-        if body.is_a?(String)
-          body = JSON.parse(body, symbolize_names: true)
-        end
-        ": #{body[:error] || body[:message] || ''}"
-      else
-        ''
-      end
+                  body = JSON.parse(body, symbolize_names: true) if body.is_a?(String)
+                  ": #{body[:error] || body[:message] || ''}"
+                else
+                  ''
+                end
       "#{env.method.to_s.upcase} #{env.url}: #{env.status}#{message}"
     end
   end
