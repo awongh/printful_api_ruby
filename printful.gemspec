@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'printful/version'
 
@@ -11,16 +12,14 @@ Gem::Specification.new do |gem|
   gem.description   = %q{A client for the Printful API.}
   gem.summary       = %q{A client for the Printful API.}
   gem.homepage      = "https://github.com/awongh/printful_api_ruby"
-  gem.required_ruby_version = '>= 3.2.2'
+  gem.required_ruby_version = ['>= 3.2', '< 5']
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'faraday', '~> 1.10.2'
+  gem.add_dependency 'faraday', '~> 2.0'
 
-  gem.add_development_dependency 'byebug'
   gem.add_development_dependency 'json'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
@@ -28,5 +27,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'vcr'
   gem.add_development_dependency 'dotenv'
-
 end

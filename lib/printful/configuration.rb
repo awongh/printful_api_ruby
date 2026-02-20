@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faraday'
 require 'printful/version'
 
@@ -17,7 +19,7 @@ module Printful
     DEFAULT_API_VERSION = 'v1'
     DEFAULT_API_ENDPOINT = 'https://api.printful.com/'
     DEFAULT_WEB_ENDPOINT = 'https://www.printful.com/'
-    DEFAULT_USER_AGENT = "Printful Rubygem #{Printful::VERSION}".freeze
+    DEFAULT_USER_AGENT = "Printful Rubygem #{Printful::VERSION}"
     DEFAULT_RESPONSE_FORMAT = 'json'
 
     attr_accessor(*VALID_OPTIONS_KEYS)
@@ -31,7 +33,7 @@ module Printful
     end
 
     def options
-      VALID_OPTIONS_KEYS.inject({}){|o,k| o.merge!(k => send(k)) }
+      VALID_OPTIONS_KEYS.inject({}) { |o, k| o.merge!(k => send(k)) }
     end
 
     def api_endpoint=(value)

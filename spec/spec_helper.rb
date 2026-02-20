@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dotenv/load'
 unless ENV['CI']
   require 'simplecov'
@@ -51,7 +53,7 @@ def stub_delete(url)
 end
 
 def fixture_path
-  File.expand_path("../fixtures", __FILE__)
+  File.expand_path("fixtures", __dir__)
 end
 
 def fixture(file)
@@ -64,9 +66,9 @@ end
 
 def printful_client
   Printful::Client.new({
-    consumer_token: ENV['PRINTFUL_CONSUMER_TOKEN'], 
-    consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'], 
-    oauth_token: ENV['PRINTFUL_OAUTH_TOKEN'], 
+    consumer_token: ENV['PRINTFUL_CONSUMER_TOKEN'],
+    consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'],
+    oauth_token: ENV['PRINTFUL_OAUTH_TOKEN'],
     oauth_secret: ENV['PRINTFUL_OAUTH_SECRET']
   })
 end

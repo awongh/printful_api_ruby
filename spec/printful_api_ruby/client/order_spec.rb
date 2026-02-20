@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Printful::Client do
   let(:client) do
     printful_client
   end
-  
+
   after(:each) do
     printful_client.reset
   end
@@ -12,9 +14,9 @@ describe Printful::Client do
   it "gets all orders" do
     VCR.use_cassette('get_orders') do
       response = client.get('/orders')
-      expect( response[:result] ).to be_an_instance_of(Array)
+      expect(response[:result]).to be_an_instance_of(Array)
     end
-  end 
+  end
 
   it "creates an order with sync variant id" do
     VCR.use_cassette('create_sync_vairant_id_order') do
@@ -32,9 +34,9 @@ describe Printful::Client do
           phone: '',
           email: 'nack@a15i.net',
         },
-        items:[
+        items: [
           {
-            'sync_variant_id':3554393160,
+            'sync_variant_id': 3554393160,
             'quantity': 1,
             'files': [
               {
@@ -52,8 +54,8 @@ describe Printful::Client do
         },
       })
       pp response
-      expect( response[:code] ).to eq(200)
-      expect( response[:result] ).to be_an_instance_of(Hash)
+      expect(response[:code]).to eq(200)
+      expect(response[:result]).to be_an_instance_of(Hash)
     end
   end
 end

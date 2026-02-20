@@ -1,14 +1,14 @@
-# -*- encoding: utf-8 -*-
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe Faraday::Response do
+describe Printful::RaisePrintfulApiError do
   before do
     @client = Printful::Client.new({
-      consumer_token: ENV['PRINTFUL_CONSUMER_TOKEN'], 
-      consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'], 
-      oauth_token: ENV['PRINTFUL_OAUTH_TOKEN'], 
-      oauth_secret: ENV['PRINTFUL_OAUTH_SECRET'], 
-      proxy: 'http://localhost:8888'
+      consumer_token: ENV['PRINTFUL_CONSUMER_TOKEN'],
+      consumer_secret: ENV['PRINTFUL_CONSUMER_SECRET'],
+      oauth_token: ENV['PRINTFUL_OAUTH_TOKEN'],
+      oauth_secret: ENV['PRINTFUL_OAUTH_SECRET'],
     })
   end
 
@@ -20,25 +20,20 @@ describe Faraday::Response do
     406 => Printful::NotAcceptable,
     422 => Printful::UnprocessableEntity,
     500 => Printful::InternalServerError,
-    # 501 => Printful::NotImplemented,
     502 => Printful::BadGateway,
     503 => Printful::ServiceUnavailable,
   }.each do |status, exception|
     context "when HTTP status is #{status}" do
 
       before do
-        stub_get('orders').to_return(:status => status)
+        stub_request(:get, "https://api.printful.com/orders")
+          .to_return(status: status, body: '{}', headers: { 'Content-Type' => 'application/json' })
       end
 
       it "should raise #{exception.name} error" do
-        #expect {
-
-          lambda do
-            @client.get('orders')
-            #@client.cart
-          end
-        #}.to raise_error(exception)
-
+        expect {
+          @client.get('orders')
+        }.to raise_error(exception)
       end
     end
   end
