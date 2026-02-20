@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.description   = 'A client for the Printful API.'
   gem.summary       = 'A client for the Printful API.'
   gem.homepage      = 'https://github.com/awongh/printful_api_ruby'
-  gem.required_ruby_version = ['>= 3.4', '< 5']
+  gem.required_ruby_version = ['>= 3.2.10', '< 5']
 
   gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
